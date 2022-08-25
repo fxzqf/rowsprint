@@ -29,9 +29,9 @@
         </p>
         <h3>第一步</h3>
 
-        <button>启用批量套打</button>
+        <button onclick="startWps">启用批量套打</button>
         <script>
-            window.onload = () => {
+            startWps= () => {
             var element = { "name": "wpsapp", "addonType": "et", "online": "true", "multiUser": "false", "url": "https://fxzqf.github.io/wpsapp/" };
             var installed = false;
             WpsAddonMgr.getAllConfig(function (e) {
@@ -43,7 +43,7 @@
                 }
             });
             if (!installed) {
-                WpsAddonMgr.disable(element, function (result) { });
+                WpsAddonMgr.disable(element);
                 WpsAddonMgr.enable(element);
             }
             WpsInvoke.InvokeAsHttp(WpsInvoke.ClientType.et,"wpsapp","showTaskPane",JSON.stringify({url:"rowsprint",name:"批量套打"}));
