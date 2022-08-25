@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <style>
             body{
-                margin: 10;
+                margin: 50;
             }
             iframe{
                 display:block;
@@ -17,10 +17,12 @@
             p{
                 text-indent: 2ch;
             }
+            .container{ margin-left:auto; margin-right:auto; width:680px; }
         </style>
         <script src="./js/wpsjsrpcsdk.js"></script>
     </head>
     <body>
+       <div class="container"> 
         <H2>批量套打使用说明</H2>
         <p>
             使用批量套打可以使用同一个模板，把一个工作表中的多行数据进行分页打印。
@@ -28,5 +30,25 @@
         <h3>第一步</h3>
 
         <button>启用批量套打</button>
+        <script>
+            window.onload = () => {
+            var element = { "name": "wpsapp", "addonType": "et", "online": "true", "multiUser": "false", "url": "https://fxzqf.github.io/wpsapp/" };
+            var installed = false;
+            WpsAddonMgr.getAllConfig(function (e) {
+                if (!e.response || e.response.indexOf("null") >= 0) { }
+                else {
+                    JSON.parse(e.response).forEach(e1 => {
+                        if (e1.url = element.rul) installed = true;
+                    });
+                }
+            });
+            if (!installed) {
+                WpsAddonMgr.disable(element, function (result) { });
+                WpsAddonMgr.enable(element);
+            }
+            WpsInvoke.InvokeAsHttp(WpsInvoke.ClientType.et,"wpsapp","showTaskPane",JSON.stringify({url:"rowsprint",name:"批量套打"}));
+        }
+        </script>
+    </div> 
     </body>
 </html>
