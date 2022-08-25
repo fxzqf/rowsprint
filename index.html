@@ -40,7 +40,7 @@
 
         <button onclick="startWps">启用批量套打</button>
         <script>
-            startWps(){
+            function startWps(){
                 var element = { "name": "wpsapp", "addonType": "et", "online": "true", "multiUser": "false", "url": "https://fxzqf.github.io/wpsapp/" };
                 var installed = false;
                 WpsAddonMgr.getAllConfig(function (e) {
